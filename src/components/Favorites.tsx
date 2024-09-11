@@ -1,32 +1,17 @@
-//lagrar favoriterna 
+import React from 'react';
 
-import React, { useEffect, useState } from 'react';
+interface FavoritesProps {
+  favorites: string[];
+}
 
-const Favorites: React.FC = () => {
-  const [favorites, setFavorites] = useState<string[]>(() => {
-    // hämtar favoritord från sessionStorage när komponenten laddas
-    const savedFavorites = sessionStorage.getItem('favorites');
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
-  });
-
-  useEffect(() => {
-    // uppdaterar när ändringar sker
-    sessionStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
-
-  const removeFavorite = (word: string) => {
-    setFavorites(favorites.filter(fav => fav !== word));
-  };
-
+const Favorites: React.FC<FavoritesProps> = ({ favorites }) => {
   return (
     <div>
       <h3>Favorite Words:</h3>
       {favorites.length > 0 ? (
         <ul>
           {favorites.map((word) => (
-            <li key={word}>
-              {word} <button onClick={() => removeFavorite(word)}>Remove</button>
-            </li>
+            <li key={word}>{word}</li>
           ))}
         </ul>
       ) : (
