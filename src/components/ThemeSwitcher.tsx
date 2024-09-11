@@ -1,15 +1,18 @@
-
-//temakomponent
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ThemeSwitcher: React.FC = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState<string>(() => {
+    return localStorage.getItem('theme') || 'light';
+  });
+
+  useEffect(() => {
+    document.body.className = theme; 
+    localStorage.setItem('theme', theme); // sparar temat i local
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.body.className = newTheme; 
   };
 
   return (

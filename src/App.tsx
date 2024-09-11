@@ -3,6 +3,8 @@ import SearchBar from './components/SearchBar';
 import WordDetails from './components/WordDetails';
 import Favorites from './components/Favorites';
 import ThemeSwitcher from './components/ThemeSwitcher';
+import './styles/theme.css';  
+
 
 const App: React.FC = () => {
   const [wordData, setWordData] = useState<any>(null);
