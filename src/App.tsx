@@ -13,13 +13,20 @@ const App: React.FC = () => {
     return JSON.parse(localStorage.getItem('favorites') || '[]');
   });
 
-  // lägg till favoriter
+  // Funktion för att lägga till ord till favoriter
   const addToFavorites = (word: string) => {
     if (!favorites.includes(word)) {
       const updatedFavorites = [...favorites, word];
       setFavorites(updatedFavorites);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     }
+  };
+
+  // Funktion för att ta bort ett ord från favoriter
+  const removeFavorite = (word: string) => {
+    const updatedFavorites = favorites.filter(favorite => favorite !== word);
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
   return (
@@ -31,8 +38,8 @@ const App: React.FC = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {wordData && <WordDetails data={wordData} addToFavorites={addToFavorites} />}
       
-      {/* häe e favoriter */}
-      <Favorites favorites={favorites} />
+      {/* Visa och hantera favoriter */}
+      <Favorites favorites={favorites} removeFavorite={removeFavorite} />
     </div>
   );
 };
