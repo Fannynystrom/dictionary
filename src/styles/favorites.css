@@ -1,0 +1,86 @@
+/* Standard styling för favoriter (ljust tema) */
+/* .favorites {
+    background-color: #f7f7f7; 
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    color: #333; 
+    border: 1px solid #ccc; 
+  } */
+  
+  /* Sidebar till höger (favoritord) */
+  .sidebar {
+    width: 200px;
+    background-color: #f7f7f7;
+    padding: 15px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid #ccc; 
+  }
+  
+  /* styling för listan */
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* styling för varje favoritord */
+  .sidebar li {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+ 
+  
+  /* styling för krysset (ta bort favvoord) */
+  .favorites button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .favorites button:hover {
+    background-color: #ff3333;
+  }
+  
+  /* Mörkt tema för favoriter */
+  body.dark .favorites {
+    background-color: #333;
+    color: white; 
+    border: 1px solid #888; 
+  }
+  
+  /* favvolistan i mörkt tema */
+  body.dark .favorites li {
+    color: white; 
+    border-bottom: 1px solid #555;
+  }
+  
+  /* krsset för att ta bort ett favoritord i mörkt tema */
+  body.dark .favorites button {
+    background-color: #ff4d4d;
+    color: white;
+  }
+  
+  body.dark .favorites button:hover {
+    background-color: #ff3333;
+  }
+  
+  /* rorder och bakgrund för sidebar i mörkt tema */
+  body.dark .sidebar {
+    border: 1px solid #888;
+    background-color: #6a6767;
+    color: white; 
+  }
+  

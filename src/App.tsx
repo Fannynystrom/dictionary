@@ -6,6 +6,9 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 import './styles/theme.css';  
 import './styles/app.css';  
 import './styles/search.css';  
+import './styles/favorites.css';  
+
+
 
 
 const App: React.FC = () => {

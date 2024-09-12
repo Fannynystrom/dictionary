@@ -31,13 +31,7 @@ html, body {
     flex: 1;
   }
   
-  /* sidobar till höger (favoritord) */
-  .sidebar {
-    width: 200px;
-    background-color: #f7f7f7;
-    padding: 15px;
-    border-radius: 10px;
-  }
+
   
   /* knappen för att byta tema på sidan ljus eller mörk */
   .theme-switcher {
