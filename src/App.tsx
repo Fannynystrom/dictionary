@@ -4,7 +4,7 @@ import WordDetails from './components/WordDetails';
 import Favorites from './components/Favorites';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import './styles/theme.css';  
-
+import './styles/app.css';  
 
 const App: React.FC = () => {
   const [wordData, setWordData] = useState<any>(null);
@@ -13,7 +13,7 @@ const App: React.FC = () => {
     return JSON.parse(localStorage.getItem('favorites') || '[]');
   });
 
-  // Funktion för att lägga till ord till favoriter
+  // lägger till favorier
   const addToFavorites = (word: string) => {
     if (!favorites.includes(word)) {
       const updatedFavorites = [...favorites, word];
@@ -22,7 +22,7 @@ const App: React.FC = () => {
     }
   };
 
-  // Funktion för att ta bort ett ord från favoriter
+  //  ta bort ett ord från favoriter
   const removeFavorite = (word: string) => {
     const updatedFavorites = favorites.filter(favorite => favorite !== word);
     setFavorites(updatedFavorites);
@@ -30,16 +30,27 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Dictionary App</h1>
-      <ThemeSwitcher />
-      <SearchBar onResult={setWordData} onError={setError} />
-      
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {wordData && <WordDetails data={wordData} addToFavorites={addToFavorites} />}
-      
-      {/* Visa och hantera favoriter */}
-      <Favorites favorites={favorites} removeFavorite={removeFavorite} />
+    <div className="container">
+      {/* rubrik */}
+      <h1 className="centered-title">Dictionary App</h1>
+
+      {/* layout med vänster- och högerspalter */}
+      <div className="main-layout">
+        {/* main sektion med sökfält och resultat */}
+        <div className="main-content">
+          <div className="theme-switcher">
+            <ThemeSwitcher />
+          </div>
+          <SearchBar onResult={setWordData} onError={setError} />
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          {wordData && <WordDetails data={wordData} addToFavorites={addToFavorites} />}
+        </div>
+
+        {/* högerspalten med favoriter */}
+        <div className="sidebar">
+          <Favorites favorites={favorites} removeFavorite={removeFavorite} />
+        </div>
+      </div>
     </div>
   );
 };
