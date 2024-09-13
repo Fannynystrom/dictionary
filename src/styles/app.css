@@ -1,41 +1,39 @@
-
 html, body {
-    height: 100%; 
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5dc; /* Ljus grå färg */
-    font-family: Arial, sans-serif;
-  }
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 /* container runt allt innehåll */
 .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* rubriken, här kommer bild sen */
-  .centered-title {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  /* flexbox för layouten mellan vänsterinnehåll och högerinnehåll */
-  .main-layout {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  /* huvudinnehåll till vänster  (säö efter ord och resultat)*/
-  .main-content {
-    flex: 1;
-  }
-  
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  
-  /* knappen för att byta tema på sidan ljus eller mörk */
-  .theme-switcher {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+/* rubriken, här kommer bild sen */
+.logo {
+justify-content: center;
+  margin-bottom: 40px;
+  width: 1000px;
+}
+
+/* flexbox för layouten mellan vänsterinnehåll och högerinnehåll */
+.main-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* huvudinnehåll till vänster  (säö efter ord och resultat)*/
+.main-content {
+  flex: 1;
+}
+
+
+
+/* knappen för att byta tema på sidan ljus eller mörk */
+.theme-switcher {
+  text-align: center;
+  margin-bottom: 20px;
+}

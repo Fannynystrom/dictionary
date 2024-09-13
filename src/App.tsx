@@ -37,8 +37,9 @@ const App: React.FC = () => {
   return (
     <div className="container">
       {/* rubrik */}
-      <h1 className="centered-title">Dictionary App</h1>
-
+      <div className="centered-title">
+        <img src="/assets/lexicon.png" alt="Lexicon Logo" className="logo" /> 
+      </div>
       {/* layout med vänster- och högerspalter */}
       <div className="main-layout">
         {/* main sektion med sökfält och resultat */}
@@ -51,7 +52,7 @@ const App: React.FC = () => {
           {wordData && <WordDetails data={wordData} addToFavorites={addToFavorites} />}
         </div>
 
-        {/* högerspalten med favoriter */}
+        {/* högerspalten visar favoriter */}
         <div className="sidebar">
           <Favorites favorites={favorites} removeFavorite={removeFavorite} />
         </div>
