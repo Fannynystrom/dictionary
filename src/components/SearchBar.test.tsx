@@ -1,15 +1,14 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import axios from 'axios'; // Importera axios för att mocka API-anrop
-import SearchBar from './SearchBar'; // denna som testas
-import '@testing-library/jest-dom';  // 
+import axios from 'axios'; 
+import SearchBar from './SearchBar'; 
+import '@testing-library/jest-dom';  
 import { act } from 'react-dom/test-utils'; 
 
 jest.mock('axios');  // mockar axios så att API-anropet inte körs på riktigt
 
 describe('SearchBar', () => {
     // testar att inputfältet och sökknappen renderas korrekt
-    // describe används för att gruppera tester i samma komponent, i detta fall "SearchBar"
     test('renderar sökfält och knapp', () => {
         render(<SearchBar onResult={jest.fn()} onError={jest.fn()} />);
         
@@ -22,12 +21,18 @@ describe('SearchBar', () => {
         expect(button).toBeInTheDocument();
     });
 
-    // testar att användarinmatning hanteras och att onResult triggas när sökknappen trycks
-    test('hanterar användarinmatning och triggar onResult när sökknappen klickas', async () => {
+    // testar dynamiskt API-svar baserat på inmatning
+    test('hanterar användarinmatning och triggar onResult när sökknappen klickas med dynamiskt API-svar', async () => {
         const mockOnResult = jest.fn();  // mockar funktionen onResult för att se om den anropas
         const mockOnError = jest.fn();   // mockar funktionen onError
-        const mockData = { data: [{ word: 'hello', definition: 'A greeting' }] }; // mockar API-svar
-        (axios.get as jest.Mock).mockResolvedValueOnce(mockData);  // mockar axios-anropet för att returnera mockData
+
+        // dynamisk mockning baserat på användarens input
+        (axios.get as jest.Mock).mockImplementation((url) => {
+            const word = url.split('/').pop(); 
+            return Promise.resolve({
+                data: [{ word, definition: `Definition of ${word}` }] // dynamiskt API-svar
+            });
+        });
 
         render(<SearchBar onResult={mockOnResult} onError={mockOnError} />);
         
@@ -38,11 +43,11 @@ describe('SearchBar', () => {
         // simulera att användaren klickar på sök-knappen
         const button = screen.getByText('Search');
         await act(async () => {
-            fireEvent.click(button);  // Vi behöver act() för async-funktioner
+            fireEvent.click(button);  
         });
 
-        // kollar att mockOnResult har anropats med mockData
-        expect(mockOnResult).toHaveBeenCalledWith(mockData.data);  // förväntar att onResult har anropats med mockad API-data
+        // kollar att mockOnResult har anropats med korrekt dynamiskt svar
+        expect(mockOnResult).toHaveBeenCalledWith([{ word: 'hello', definition: 'Definition of hello' }]);
     });
 
     // testar felhantering när inputfältet är tomt och användaren försöker söka
