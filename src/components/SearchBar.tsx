@@ -32,7 +32,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onResult, onError }) => {
         onChange={(e) => setWord(e.target.value)}
         placeholder="Search for a word"
       />
-      <button onClick={handleSearch}>Search</button>
+<button className="search-button" onClick={handleSearch}>Search</button>
     </div>
   );
 };
