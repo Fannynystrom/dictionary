@@ -1,32 +1,47 @@
-/* de ljusa temat */
+/* ljust tema */
 body.light {
-    background-color: #f3f5f9; 
-    color: black;
-  }
-  
-  /* de mörka temat */
-  body.dark {
-    background-color: rgb(79, 78, 78); /* den mörka färgen */
-    color: white;
-  }
-  
-  /* Ytterligare styling för knappar och andra element  */
-  button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+  background-color: #f3f5f9; 
+  color: black;
+}
 
-  }
-  
-  body.light button {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  body.dark button {
-    background-color: #555;
-    color: white;
-  }
-  
+/* mörkt tema */
+body.dark {
+  background-color: rgb(79, 78, 78); /* Mörk bakgrund */
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px; /* Rundare form */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Mjuk övergång */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Lätt skugga */
+}
+
+body.light button {
+  background-color: #ddd;
+  color: black;
+}
+
+body.dark button {
+  background-color: #555;
+  color: white;
+}
+
+/* Hover-effekt för knappar */
+button:hover {
+  background-color: #45a049; /* Grön på hover */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* större skugga på hover */
+}
+
+body.dark button:hover {
+  background-color: #777; /* lite ljusare hover i mörkt tema */
+}
+
+/* Styling för beskrivningstext i mörkt tema */
+body.dark .description {
+  color: #fff; 
+}

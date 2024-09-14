@@ -8,9 +8,6 @@ import './styles/app.css';
 import './styles/search.css';  
 import './styles/favorites.css';  
 
-
-
-
 const App: React.FC = () => {
   const [wordData, setWordData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +36,12 @@ const App: React.FC = () => {
       {/* rubrik */}
       <div className="centered-title">
         <img src="/assets/lexicon.png" alt="Lexicon Logo" className="logo" /> 
+        <p className="description">
+          Lexicon to understand words. Type in your word, click search, if you're lucky there's an audio file that reads the word to you. <br />
+          Easily add your favorite word by clicking "add to favorites" when the word appears.
+        </p>
       </div>
+      
       {/* layout med vänster- och högerspalter */}
       <div className="main-layout">
         {/* main sektion med sökfält och resultat */}
@@ -52,7 +54,7 @@ const App: React.FC = () => {
           {wordData && <WordDetails data={wordData} addToFavorites={addToFavorites} />}
         </div>
 
-        {/* högerspalten visar favoriter */}
+        {/* högerspalten med favoriter */}
         <div className="sidebar">
           <Favorites favorites={favorites} removeFavorite={removeFavorite} />
         </div>
