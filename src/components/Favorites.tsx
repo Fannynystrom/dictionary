@@ -15,9 +15,10 @@ const Favorites: React.FC<FavoritesProps> = ({ favorites, removeFavorite }) => {
             <li key={word} style={{ display: 'flex', justifyContent: 'space-between' }}>
               {word}
               {/* kryss för att ta bort sin favvo */}
-              <button onClick={() => removeFavorite(word)} style={{ marginLeft: '10px' }}>
-                ❌
+              <button className="remove-favorite-button" onClick={() => removeFavorite(word)}>
+               ❌
               </button>
+
             </li>
           ))}
         </ul>

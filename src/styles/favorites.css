@@ -36,7 +36,21 @@
     margin-top: 10px;
   }
   
- 
+ /* styling för favorit-kryss (ta bort) */
+.remove-favorite-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px; 
+}
+
+.remove-favorite-button:hover {
+  background-color: #393737;
+}
+
   
   /* styling för krysset (ta bort favvoord) */
   .favorites button {
