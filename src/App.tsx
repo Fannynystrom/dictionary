@@ -8,6 +8,9 @@ import './styles/app.css';
 import './styles/search.css';  
 import './styles/favorites.css';  
 
+//typdefinition som indikerar att app.tsx är en funktionell funktion
+//React.FC informerar att hantera props och retunera JSX element
+//sedan mina states för denna filen, lagring av information,  vilket är dem nedanför
 const App: React.FC = () => {
   const [wordData, setWordData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
@@ -17,11 +20,13 @@ const App: React.FC = () => {
   
   //lägger till favoriter
   const addToFavorites = (wordData: any) => {
+    //kollar så att ordet hämats korrekt från api 
     if (!wordData || !wordData[0]) {
       console.error("No valid word data to add to favorites.");
       return;
     }
 
+    //förväntar sig ord och mening med förklaring av ordert
     const word = wordData[0]?.word;
     const definition = wordData[0]?.meanings[0]?.definitions[0]?.definition;
 
@@ -34,7 +39,7 @@ const App: React.FC = () => {
     }
   };
 
-  // Ta bort ett ord från favoriter
+  // tar bort ett ord från favoriter
   const removeFavorite = (word: string) => {
     const updatedFavorites = favorites.filter(favorite => favorite.word !== word);
     setFavorites(updatedFavorites);
@@ -43,7 +48,6 @@ const App: React.FC = () => {
 
   return (
     <div className="container">
-      {/* rubrik */}
       <div className="centered-title">
         <img src="/assets/lexicon.png" alt="Lexicon Logo" className="logo" /> 
         <p className="description">
