@@ -3,6 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import WordDetails from './WordDetails';
 import '@testing-library/jest-dom'; 
 
+
+//mockad orddata
 describe('WordDetails Component', () => {
   const mockData = [
     {
