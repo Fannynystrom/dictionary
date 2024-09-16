@@ -62,4 +62,27 @@ describe('SearchBar', () => {
         // kollar att mockOnError har anropats med rätt felmeddelande
         expect(mockOnError).toHaveBeenCalledWith('Please enter a word to search');  // Förväntar att onError har anropats
     });
+
+    // testar felhantering när API-anropet misslyckas
+    test('visar felmeddelande om API-anrop misslyckas', async () => {
+        const mockOnError = jest.fn(); // mockar funktionen onError
+
+        // mockar fel vid API-anrop
+        (axios.get as jest.Mock).mockRejectedValue(new Error('API Error'));
+
+        render(<SearchBar onResult={jest.fn()} onError={mockOnError} />);
+
+        // simulera att användaren skriver ett ord i inputfältet
+        const input = screen.getByPlaceholderText('Search for a word');
+        fireEvent.change(input, { target: { value: 'hello' } });
+
+        // simulera att användaren klickar på sök-knappen
+        const button = screen.getByText('Search');
+        await act(async () => {
+            fireEvent.click(button);
+        });
+
+        // kollar att onError anropas med korrekt felmeddelande
+        expect(mockOnError).toHaveBeenCalledWith('Word not found or an error occurred.');
+    });
 });
