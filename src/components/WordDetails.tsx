@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 
+//interface specificerar vilka props
 interface WordDetailsProps {
   data: any;
   addToFavorites: (wordData: any) => void;
 }
 
 const WordDetails: React.FC<WordDetailsProps> = ({ data, addToFavorites }) => {
-  // Kontrollera att data finns innan vi renderar komponenten
+  // kollar att data finns innan vi renderar komponenten
   if (!data || !data[0]) {
     return <p>No word data available</p>;
   }
