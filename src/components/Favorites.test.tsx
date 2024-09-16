@@ -10,8 +10,8 @@ describe('Favorites Component', () => {
   beforeEach(() => {
     // Initialisera testdata före varje test
     mockFavorites = [
-      { word: 'hej', definition: 'A greeting' },
-      { word: 'värld', definition: 'The earth or globe' },
+      { word: 'hello', definition: 'A greeting' },
+      { word: 'world', definition: 'The earth or globe' },
       { word: 'React', definition: 'A JavaScript library for building user interfaces' }
     ];
     mockRemoveFavorite = jest.fn(); // mockar funktionen removeFavorite
