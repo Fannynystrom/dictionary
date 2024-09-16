@@ -2,10 +2,15 @@ import React, { useEffect } from 'react';
 
 interface WordDetailsProps {
   data: any;
-  addToFavorites: (word: string) => void;
+  addToFavorites: (wordData: any) => void;
 }
 
 const WordDetails: React.FC<WordDetailsProps> = ({ data, addToFavorites }) => {
+  // Kontrollera att data finns innan vi renderar komponenten
+  if (!data || !data[0]) {
+    return <p>No word data available</p>;
+  }
+
   const word = data[0]?.word;
   const definition = data[0]?.meanings[0]?.definitions[0]?.definition;
   const audioSrc = data[0]?.phonetics[0]?.audio;
@@ -24,7 +29,7 @@ const WordDetails: React.FC<WordDetailsProps> = ({ data, addToFavorites }) => {
       <p>{definition}</p>
 
       {/* favvoknappen */}
-      <button onClick={() => addToFavorites(word)}>
+      <button onClick={() => addToFavorites(data)}>
         Lägg till favorit
       </button>
 

@@ -1,43 +1,46 @@
-/* Standard styling för favoriter (ljust tema) */
-/* .favorites {
-    background-color: #f7f7f7; 
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-    color: #333; 
-    border: 1px solid #ccc; 
-  } */
-  
-  /* Sidebar till höger (favoritord) */
-  .sidebar {
-    width: 200px;
-    background-color: #f7f7f7;
-    padding: 15px;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #ccc; 
-    margin-top: 90px;
-  }
-  
-  /* styling för listan */
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  /* styling för varje favoritord */
-  .sidebar li {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
- /* styling för favorit-kryss (ta bort) */
+/* Sidebar till höger (favoritord) */
+.sidebar {
+  width: 200px;
+  background-color: #f7f7f7;
+  padding: 15px;
+  color: black;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 90px;
+}
+
+/* styling för listan */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* styling för varje favoritord */
+.sidebar li {
+  display: flex;
+  flex-direction: column; /* Lägg till kolumnlayout så att definitionen hamnar under ordet */
+  align-items: flex-start;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-bottom: 1px solid #ccc; /* Avdelare mellan varje favorit */
+}
+
+/* Styling för ordets förklaring (definition) */
+.definition {
+  font-size: 14px; /* Mindre storlek för definitionen */
+  color: #666; /* Lite ljusare färg för att separera från ordet */
+  margin-top: 5px; /* Liten marginal ovanför definitionen */
+  font-style: italic; /* Gör texten kursiv för att markera definitionen */
+}
+
+/* Styling för ordet */
+.favorite-word {
+  font-weight: bold; /* Fetstil för att markera ordet */
+  color: #000; /* Färg på ordet */
+}
+
+/* styling för favorit-kryss (ta bort) */
 .remove-favorite-button {
   background-color: #ccc;
   border: none;
@@ -45,57 +48,49 @@
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 10px; 
+  margin-top: 5px; /* Marginal mellan ordet och ta bort-knappen */
 }
 
 .remove-favorite-button:hover {
   background-color: #393737;
 }
 
-  
-  /* styling för krysset (ta bort favvoord) */
-  .favorites button {
-    background-color: #ff4d4d;
-    border: none;
-    color: white;
-    padding: 5px 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .favorites button:hover {
-    background-color: #ff3333;
-  }
-  
-  /* Mörkt tema för favoriter */
-  body.dark .favorites {
-    background-color: #333;
-    color: white; 
-    border: 1px solid #888; 
-  }
-  
-  /* favvolistan i mörkt tema */
-  body.dark .favorites li {
-    color: white; 
-    border-bottom: 1px solid #555;
-  }
-  
-  /* krsset för att ta bort ett favoritord i mörkt tema */
-  body.dark .favorites button {
-    background-color: #ff4d4d;
-    color: white;
-  }
-  
-  body.dark .favorites button:hover {
-    background-color: #ff3333;
-  }
-  
-  /* rorder och bakgrund för sidebar i mörkt tema */
-  body.dark .sidebar {
-    border: 1px solid #888;
-    background-color: #6a6767;
-    color: white; 
-  }
-  
+/* Mörkt tema för favoriter */
+body.dark .favorites {
+  background-color: #333;
+  color: white;
+  border: 1px solid #888;
+}
+
+/* favvolistan i mörkt tema */
+body.dark .favorites li {
+  color: white;
+  border-bottom: 1px solid #555;
+}
+
+/* Styling för ordets förklaring (definition) i mörkt tema */
+body.dark .definition {
+  color: #aaa; /* Ljusa upp definitionens färg i mörkt tema */
+}
+
+/* Styling för ordet i mörkt tema */
+body.dark .favorite-word {
+  color: #fff; /* Gör ordet vitt i mörkt tema */
+}
+
+/* krysset för att ta bort ett favoritord i mörkt tema */
+body.dark .favorites button {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+body.dark .favorites button:hover {
+  background-color: #ff3333;
+}
+
+/* Ramen och bakgrunden för sidebar i mörkt tema */
+body.dark .sidebar {
+  border: 1px solid #888;
+  background-color: #6a6767;
+  color: white;
+}

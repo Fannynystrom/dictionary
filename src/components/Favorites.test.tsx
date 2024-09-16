@@ -4,50 +4,58 @@ import '@testing-library/jest-dom';
 import Favorites from './Favorites'; 
 
 describe('Favorites Component', () => {
+  let mockFavorites: { word: string; definition: string }[];
+  let mockRemoveFavorite: jest.Mock;
+
+  beforeEach(() => {
+    // Initialisera testdata före varje test
+    mockFavorites = [
+      { word: 'hej', definition: 'A greeting' },
+      { word: 'värld', definition: 'The earth or globe' },
+      { word: 'React', definition: 'A JavaScript library for building user interfaces' }
+    ];
+    mockRemoveFavorite = jest.fn(); // mockar funktionen removeFavorite
+  });
+
   // testar om komponenten renderar korrekt när det inte finns några favoritord
   test('visar meddelande när det inte finns några favoritord', () => {
-    render(<Favorites favorites={[]} removeFavorite={jest.fn()} />);
+    render(<Favorites favorites={[]} removeFavorite={mockRemoveFavorite} />);
   
-    // Kollar att meddelandet visas när det inte finns några favoriter
+    // kollar att meddelandet visas när det inte finns några favoriter
     const message = screen.getByText('No favorite words yet.');
     expect(message).toBeInTheDocument();
   });
-  
 
-  // testar om favoriter renderas korrekt
-  test('renderar favoritord korrekt', () => {
-    const favoriteWords = ['hej', 'värld'];
-    render(<Favorites favorites={favoriteWords} removeFavorite={jest.fn()} />);
+  // testar om favoriter renderas korrekt med ord och definition
+  test('renderar favoritord och definition korrekt', () => {
+    render(<Favorites favorites={mockFavorites.slice(0, 2)} removeFavorite={mockRemoveFavorite} />);
 
-    // kollar att favoritorden visas
-    const favorite1 = screen.getByText('hej');
-    const favorite2 = screen.getByText('värld');
+    // Kontrollera att favoritorden och deras definitioner visas
+    expect(screen.getByText(mockFavorites[0].word)).toBeInTheDocument();
+    expect(screen.getByText(mockFavorites[0].definition)).toBeInTheDocument();
     
-    expect(favorite1).toBeInTheDocument();
-    expect(favorite2).toBeInTheDocument();
+    expect(screen.getByText(mockFavorites[1].word)).toBeInTheDocument();
+    expect(screen.getByText(mockFavorites[1].definition)).toBeInTheDocument();
   });
 
   // testar borttagning av ett favoritord
   test('tar bort ett favoritord när ta bort-knappen (kryss) klickas', () => {
-    const mockRemoveFavorite = jest.fn();
-    const favoriteWords = ['hej'];
-    render(<Favorites favorites={favoriteWords} removeFavorite={mockRemoveFavorite} />);
+    render(<Favorites favorites={mockFavorites.slice(0, 1)} removeFavorite={mockRemoveFavorite} />);
 
     // hitta och klicka på ta bort-knappen (❌)
     const removeButton = screen.getByText('❌');
     fireEvent.click(removeButton);
 
-    // kolla att mockRemoveFavorite anropas med rätt ord
-    expect(mockRemoveFavorite).toHaveBeenCalledWith('hej');
+    // kollar att mockRemoveFavorite anropas med rätt ord
+    expect(mockRemoveFavorite).toHaveBeenCalledWith(mockFavorites[0].word);
   });
 
   // testar att komponenten renderar rätt antal favoriter
   test('renderar rätt antal favoritord', () => {
-    const favoriteWords = ['hej', 'värld', 'React'];
-    render(<Favorites favorites={favoriteWords} removeFavorite={jest.fn()} />);
+    render(<Favorites favorites={mockFavorites} removeFavorite={mockRemoveFavorite} />);
 
     // kollar att antalet listade favoriter är korrekt
     const favoriteItems = screen.getAllByRole('listitem');
-    expect(favoriteItems.length).toBe(3);
+    expect(favoriteItems.length).toBe(mockFavorites.length);
   });
 });
