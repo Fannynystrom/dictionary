@@ -4,25 +4,35 @@ html, body {
   padding: 0;
   font-family: Arial, sans-serif;
 }
+
+/* .centered-title {
+  width: 1200px;
+  justify-content: center;
+  align-items: center;
+} */
 /* container runt allt innehåll */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 /* rubriken, här kommer bild sen */
 .logo {
 justify-content: center;
   margin-bottom: 40px;
-  width: 1000px;
+  width: 100%;
+  box-shadow: 0px 30px 20px rgba(0, 0, 0, 0.1);
+
 }
 
 /* flexbox för layouten mellan vänsterinnehåll och högerinnehåll */
 .main-layout {
   display: flex;
-  justify-content: space-between;
   gap: 20px;
+justify-content: center;
+width: 900px;
+margin-left: 170px;
 }
 
 /* huvudinnehåll till vänster  (säö efter ord och resultat)*/
@@ -40,8 +50,8 @@ justify-content: center;
 
 
 /* knappen för att byta tema på sidan ljus eller mörk */
-.theme-switcher {
+/* .theme-switcher {
   text-align: center;
   margin-bottom: 20px;
 align-items: center;
-}
+} */

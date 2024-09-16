@@ -18,6 +18,7 @@
     color: black;
     border-radius: 10px;
     border: 1px solid #ccc; 
+    margin-top: 90px;
   }
   
   /* styling för listan */
@@ -32,13 +33,13 @@
     justify-content: space-between; 
     align-items: center; 
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 10px;
   }
   
  /* styling för favorit-kryss (ta bort) */
 .remove-favorite-button {
-  background-color: #ff4d4d;
+  background-color: #ccc;
   border: none;
   color: white;
   padding: 5px 10px;

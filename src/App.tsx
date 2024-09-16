@@ -37,18 +37,19 @@ const App: React.FC = () => {
       <div className="centered-title">
         <img src="/assets/lexicon.png" alt="Lexicon Logo" className="logo" /> 
         <p className="description">
-          Lexicon to understand words. Type in your word, click search, if you're lucky there's an audio file that reads the word to you. <br />
+        Dictionary of words. Type in your word, click search, if you're lucky there's an audio file that reads the word to you. <br />
           Easily add your favorite word by clicking "add to favorites" when the word appears.
         </p>
+        <div className="theme-switcher">
+            <ThemeSwitcher />
+          </div>
       </div>
       
       {/* layout med vänster- och högerspalter */}
       <div className="main-layout">
         {/* main sektion med sökfält och resultat */}
         <div className="main-content">
-          <div className="theme-switcher">
-            <ThemeSwitcher />
-          </div>
+         
           <SearchBar onResult={setWordData} onError={setError} />
           {error && <p style={{ color: 'red' }}>{error}</p>}
           {wordData && <WordDetails data={wordData} addToFavorites={addToFavorites} />}
