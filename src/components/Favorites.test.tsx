@@ -38,17 +38,17 @@ describe('Favorites Component', () => {
     expect(screen.getByText(mockFavorites[1].definition)).toBeInTheDocument();
   });
 
-  // testar borttagning av ett favoritord
-  test('tar bort ett favoritord när ta bort-knappen (kryss) klickas', () => {
+  // testar att removeFavorite anropas när man skall ta bort ett ord
+  test('anropar removeFavorite när ta bort-knappen klickas', () => {
     render(<Favorites favorites={mockFavorites.slice(0, 1)} removeFavorite={mockRemoveFavorite} />);
-
-    // hitta och klicka på ta bort-knappen (❌)
+  
     const removeButton = screen.getByText('❌');
     fireEvent.click(removeButton);
-
-    // kollar att mockRemoveFavorite anropas med rätt ord
+  
+   
     expect(mockRemoveFavorite).toHaveBeenCalledWith(mockFavorites[0].word);
   });
+  
 
 
 });
