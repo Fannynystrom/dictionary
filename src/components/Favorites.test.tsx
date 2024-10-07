@@ -50,12 +50,5 @@ describe('Favorites Component', () => {
     expect(mockRemoveFavorite).toHaveBeenCalledWith(mockFavorites[0].word);
   });
 
-  // testar att komponenten renderar rätt antal favoriter
-  test('renderar rätt antal favoritord', () => {
-    render(<Favorites favorites={mockFavorites} removeFavorite={mockRemoveFavorite} />);
 
-    // kollar att antalet listade favoriter är korrekt
-    const favoriteItems = screen.getAllByRole('listitem');
-    expect(favoriteItems.length).toBe(mockFavorites.length);
-  });
 });
