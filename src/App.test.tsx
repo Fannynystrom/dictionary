@@ -66,3 +66,36 @@ describe('App integration tests', () => {
     expect(screen.getByText('hello')).toBeInTheDocument();
   });
 });
+
+//nytt test för att testa ta bort ett favoritord
+test('lägger till och tar bort ord från favoriter i applikationen', async () => {
+  const mockApiResponse = [
+    {
+      word: 'hello',
+      meanings: [{ definitions: [{ definition: 'A greeting' }] }],
+      phonetics: [{ audio: 'https://api.dictionaryapi.dev/media/pronunciations/en/hello.mp3' }]
+    }
+  ];
+
+  // mockar API-responsen
+  (axios.get as jest.Mock).mockResolvedValueOnce({ data: mockApiResponse });
+
+  render(<App />);
+
+  // sök efter ett ord
+  fireEvent.change(screen.getByPlaceholderText('Search for a word'), { target: { value: 'hello' } });
+  await act(async () => {
+    fireEvent.click(screen.getByText('Search'));
+  });
+
+  fireEvent.click(screen.getByText('Lägg till favorit'));
+
+  // kollar att ordet syns i favoritlistan
+  expect(screen.getByText('hello')).toBeInTheDocument();
+
+  // testar att radera ett favvo-ord
+  fireEvent.click(screen.getByText('❌'));
+
+  // kollar att ordet har försvunnit från favoritlistan
+  expect(screen.queryByText('hello')).not.toBeInTheDocument();
+});
